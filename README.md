@@ -12,7 +12,7 @@ This will install script in /usr/local/bin. From now on it will be accessible vi
 
 ### Usage
 
-####Adding variables to environments
+#### Adding variables to environments
 
 All environments will be stored inside ```$HOME/.envir``` directory. Remember to give your variables unique name your variables  as they will override when you load another environment.
 
@@ -23,7 +23,7 @@ All environments will be stored inside ```$HOME/.envir``` directory. Remember to
 ➜ envir test_app_2.APP_HOST="https://myhost"
 ```
 
-####Listing environments
+#### Listing environments
 
 ```bash
 ➜ envir list
