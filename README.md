@@ -1,6 +1,6 @@
 ## Envir - linux environment loader
 
-Working with applications that get configuration from environment? This simple bash script should simplify dealing with loading them :).
+Working with applications that get configuration from environment? This bash script should simplify dealing with loading them :).
 
 ### Installation
 
