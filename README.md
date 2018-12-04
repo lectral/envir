@@ -19,7 +19,7 @@ All environments will be stored inside ```$HOME/.envir``` directory. Remember to
 ```bash
 ➜ envir test_app.DEBUG=1
 ➜ envir test_app.HOST="https://myhost"
-➜ envir test_app.HOST="https://notmyhost" # this will HOST inside test_app
+➜ envir test_app.HOST="https://notmyhost" # this will update HOST inside test_app
 ➜ envir test_app_2.APP_HOST="https://myhost"
 ```
 
@@ -29,6 +29,14 @@ All environments will be stored inside ```$HOME/.envir``` directory. Remember to
 ➜ envir list
 test_app test_app_2
 ```
+#### Printing environment
+
+```bash
+➜ envir print test_app
+DEBUG=1
+HOST=https://notmyhost
+```
+
 
 #### Loading variables
 
@@ -36,7 +44,7 @@ To load variables all you need to do is source envir script and then chain comma
 
 ```bash
 ➜ envir test_app npm start
-➜ source envir env
+➜ envir test_app env
 ```
 
 
