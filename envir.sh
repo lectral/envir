@@ -4,11 +4,13 @@ mkdir -p ${directory}
 
 install_envir () {
   echo "Installing to /usr/local/bin"
-  envir_install_dir="/usr/local/bin/envir"
+  envir_install_dir="/usr/local/bin/"
   if [ -w "${envir_install_dir}" ]; then
     cp -f ${0} "${envir_install_dir}"
+    echo "Installation complete. Command is: envir"
+  else
+    echo "Installation failed. Run with sudo?"
   fi
-  echo "Installation complete. Command is: envir"
 }
 
 
