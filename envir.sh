@@ -1,4 +1,13 @@
 #!/bin/bash
+# envir.sh 
+# https://github.com/lectral/envir 
+# Linux shell enviroment loader and manager
+# Examples:
+#   envir install
+#   envir test_env.TEST_HELLO="hello world"
+#   envir test_env ./script_that_requires_custom_env
+#   envir edit test_env => launches $EDITOR
+
 directory="$HOME/.envir"
 mkdir -p ${directory}
 
@@ -56,24 +65,31 @@ print_env () {
   done < "${directory}/${1}"
 }
 
+# Lanches default editor
+edit_env() {
+  if [[ -z "${EDITOR}" ]]; then
+    echo "\$EDITOR not set. Defaulting to vim"
+    vi ${directory}/${1}
+  else
+    ${EDITOR} "${directory}/${1}"
+  fi
+}
+
+main() {
 
 if [ "${1}" == "list" ]; then
   list_envs
   exit 0
-fi
-
-if [ "${1}" == "print" ]; then
+elif [ "${1}" == "edit" ]; then
+  edit_env ${2}
+  exit 0
+elif [ "${1}" == "print" ]; then
   print_env ${2}
   exit 0
-fi
-
-if [ "${1}" == "install" ]; then
+elif [ "${1}" == "install" ]; then
   install_envir
   exit 0
-fi
-
-# Example: ./envir.sh file.VAR=VALUE
-if [[ $1 == *"="* ]]; then
+elif [[ $1 == *"="* ]]; then
   env_target=$(awk -F= '{print $1}' <<< "${1}" ) 
   env_value=$(awk -F= '{print $2}' <<< "${1}") 
 
@@ -84,6 +100,7 @@ else
   # Example: ./envir.sh file
   install_env $1 $@
 fi
+}
 
 
-
+main $@

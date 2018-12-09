@@ -39,4 +39,12 @@ To load variables all you need to do is source envir script and then chain comma
 ➜ source envir env
 ```
 
+#### Editing environmentts
+If you need to make more changes or change the file entirely you can use ```edit``` command. It will launch env file with whatever editor is in your $EDITOR variable.
+If the variable is not defined it will default to vim.
+
+```bash
+➜ envir edit test_app
+```
+
 
